@@ -16,10 +16,10 @@ module.exports = {
         try {
             var {userId, productId} = req.body
             await model.makeorder(userId, productId)
-            res.send([{name: "Added Sucsessfully!"}])
+            res.send([{"name": "Added Sucsessfully"}])
         } catch(e) {
             res.status(500).json({
-                message: err.message
+                message: e.message
             })
         }
     },
@@ -36,10 +36,11 @@ module.exports = {
     setOrderStatus: async(req, res) => {
         try {
             var {text, id} = req.body
-            res.send(await model.setOrderStatus(text, id))
+            await model.setOrderStatus(text, id)
+            res.send([{"name": "We are canseling the order"}])
         } catch(e) {
             res.status(500).json({
-                message: err.message
+                message: e.message
             })
         }
     }

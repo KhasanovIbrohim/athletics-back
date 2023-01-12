@@ -23,6 +23,11 @@ class Banks extends PG {
             UPDATE product SET product_price = $2 WHERE product_id = $1;
         `, id, price)
     }
+    searchproducts(name) {
+        return this.fetchAll(`
+            SELECT * FROM product WHERE product_name ILIKE '${name}%' 
+        `)
+    }
 }
 
 //Module Exports

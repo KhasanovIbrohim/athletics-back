@@ -30,6 +30,7 @@ router
     .post('/setorderstatus', orders.setOrderStatus)
 
     .get('/getproductsbycategoryid/:id', category.getCategoryById)
+    .post('/search', products.searchproducts)
 
 //Module Exports
 module.exports = router

@@ -41,5 +41,15 @@ module.exports = {
                 message: err.message
             })
         }
+    },
+    searchproducts: async(req, res) => {
+        var {name} = req.body
+        try {
+            res.send(await model.searchproducts(name))
+        } catch(e) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
     }
 }
