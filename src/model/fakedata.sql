@@ -57,8 +57,3 @@ INSERT INTO product(product_name, product_company, product_price, product_image,
 INSERT INTO product(product_name, product_company, product_price, product_image, category_id) VALUES('Nike Air Griffey Max 1', 'Nike Sports Wear|Joksel', '$170', 'https://cdn.sanity.io/images/c1chvb1i/production/f90deca58a68f4bc4194e7ca8596a1d926731ad3-640x426.jpg/NIKE-AIR-GRIFFEY-MAX-1-DARK-CONCORD-HYPER-JADE-3.jpg', 5);
 INSERT INTO product(product_name, product_company, product_price, product_image, category_id) VALUES('LeBron 19', 'Nike Sports Wear|Joksel', '$99.97', 'https://sneakernews.com/wp-content/uploads/2021/08/nike-lebron-19-black-1-1.jpg', 5);
 INSERT INTO product(product_name, product_company, product_price, product_image, category_id) VALUES('Nike Zoom Rival', 'Nike Sports Wear|Joksel', '$70', 'https://cdn.runningshoesguru.com/wp-content/uploads/2021/10/Nike-Air-Zoom-Rival-Fly-3-pic-04.jpeg', 5);
-
-
-INSERT INTO orders(user_id, product_id) VALUES(25, 3);
-INSERT INTO orders(user_id, product_id) VALUES(25, 8);
-INSERT INTO orders(user_id, product_id) VALUES(25, 5);

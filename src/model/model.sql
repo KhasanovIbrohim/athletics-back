@@ -35,6 +35,3 @@ CREATE TABLE orders(
     order_status VARCHAR(64) not null,
     product_id INT REFERENCES product(product_id)
 );
-
-SELECT p.product_name, p.product_company, p.product_price, p.product_image, p.product_sale, p.product_procent FROM orders o JOIN product p ON o.product_id = p.product_id WHERE o.user_id = 24;
-SELECT p.product_name, p.product_company, p.product_price, p.product_image, p.product_sale, p.product_procent FROM category c JOIN product p ON c.category_id = p.category_id WHERE c.category_id = 1;

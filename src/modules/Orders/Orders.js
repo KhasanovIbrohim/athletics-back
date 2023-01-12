@@ -15,7 +15,8 @@ module.exports = {
     makeorder: async(req, res) => {
         try {
             var {userId, productId} = req.body
-            res.send(await model.makeorder(userId, productId))
+            await model.makeorder(userId, productId)
+            res.send([{name: "Added Sucsessfully!"}])
         } catch(e) {
             res.status(500).json({
                 message: err.message
