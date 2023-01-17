@@ -8,14 +8,19 @@ class Banks extends PG {
             SELECT * FROM orders
         `)
     }
-    makeorder(userId, productId) {
+    getordersToSeller() {
         return this.fetchAll(`
-            INSERT INTO orders(user_id, product_id, order_status) VALUES($1, $2, 'Confirmation pending')
-        `, userId, productId)
+            SELECT o.order_id, p.product_name, o.user_phone, p.product_price, o.order_status FROM orders o JOIN product p ON o.product_id = p.product_id;
+        `)
+    }
+    makeorder(userId, productId, phone) {
+        return this.fetchAll(`
+            INSERT INTO orders(user_id, product_id, order_status, user_phone) VALUES($1, $2, 'Confirmation pending', $3)
+        `, userId, productId, phone)
     }
     getOrdersById(id) {
         return this.fetchAll(`
-            SELECT o.order_id, o.order_status, p.product_name, p.product_company, p.product_price, p.product_image, p.product_sale, p.product_procent FROM orders o JOIN product p ON o.product_id = p.product_id WHERE o.user_id = $1
+            SELECT o.user_phone, o.order_id, o.order_status, p.product_name, p.product_company, p.product_price, p.product_image, p.product_sale, p.product_procent FROM orders o JOIN product p ON o.product_id = p.product_id WHERE o.user_id = $1
         `, id)
     }
     setOrderStatus(text, id) {

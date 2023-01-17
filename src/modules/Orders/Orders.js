@@ -12,10 +12,19 @@ module.exports = {
             })
         }
     },
+    getordersToSeller: async(req, res) => {
+        try {
+            res.send(await model.getordersToSeller())
+        } catch(e) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+    },
     makeorder: async(req, res) => {
         try {
-            var {userId, productId} = req.body
-            await model.makeorder(userId, productId)
+            var {userId, productId, phone} = req.body
+            await model.makeorder(userId, productId, phone)
             res.send([{"name": "Added Sucsessfully"}])
         } catch(e) {
             res.status(500).json({

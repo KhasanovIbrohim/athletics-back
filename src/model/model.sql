@@ -33,5 +33,6 @@ CREATE TABLE orders(
     order_id serial PRIMARY KEY,
     user_id INT REFERENCES users(user_id),
     order_status VARCHAR(64) not null,
+    user_phone VARCHAR(64) not null,
     product_id INT REFERENCES product(product_id)
 );
