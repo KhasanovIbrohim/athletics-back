@@ -8,6 +8,11 @@ class Banks extends PG {
             SELECT * FROM product
         `)
     }
+    getproductbyid(id) {
+        return this.fetchAll(`
+            SELECT * FROM product WHERE product_id = $1
+        `, id)
+    }
     postproducts(name, price, image, categoryID) {
         return this.fetchAll(`
             INSERT INTO product(product_name, product_price, roduct_company, product_image, category_id) VALUES($1, $2, 'Nike Sports Wear|Joksel', $3, $4);

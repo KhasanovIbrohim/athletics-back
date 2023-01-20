@@ -34,6 +34,7 @@ router
     .post('/search', products.searchproducts)
 
     .get('/getpopularitystatistics', orders.getpopularity)
+    .get('/getproductbyid/:id', products.getproductbyid)
 
 //Module Exports
 module.exports = router

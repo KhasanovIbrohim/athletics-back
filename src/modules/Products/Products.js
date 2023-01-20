@@ -51,5 +51,15 @@ module.exports = {
                 message: err.message
             })
         }
-    }
+    },
+    getproductbyid: async(req, res) => {
+        var {id} = req.params
+        try {
+            res.send(await model.getproductbyid(id))
+        } catch(e) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+    },
 }
