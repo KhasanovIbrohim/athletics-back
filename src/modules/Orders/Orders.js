@@ -12,6 +12,15 @@ module.exports = {
             })
         }
     },
+    getpopularity: async(req, res) => {
+        try {
+            res.send(await model.getpopularity())
+        } catch(e) {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+    },
     getordersToSeller: async(req, res) => {
         try {
             res.send(await model.getordersToSeller())
@@ -24,6 +33,7 @@ module.exports = {
     makeorder: async(req, res) => {
         try {
             var {userId, productId, phone} = req.body
+            await model.popularalgorithm(productId)
             await model.makeorder(userId, productId, phone)
             res.send([{"name": "Added Sucsessfully"}])
         } catch(e) {

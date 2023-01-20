@@ -36,3 +36,21 @@ CREATE TABLE orders(
     user_phone VARCHAR(64) not null,
     product_id INT REFERENCES product(product_id)
 );
+
+CREATE TABLE order_info(
+    orders_id INT REFERENCES orders(order_id),
+    order_created_time timestamp not null,
+    order_seller_id INT REFERENCES users(user_id),
+    order_changed_time timestamp
+);
+
+CREATE TABLE popular_algoritm(
+    product_id int REFERENCES product(product_id)
+);
+
+
+-- INSERT INTO order_info(orders_id, order_created_time, order_seller_id) VALUES(9, now(), 15);
+
+-- UPDATE order_info SET order_changed_time = now() WHERE orders_id = 9;
+
+-- SELECT AGE(order_changed_time, order_created_time) from order_info;

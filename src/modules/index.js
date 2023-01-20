@@ -33,5 +33,7 @@ router
     .get('/getorderstoseller', orders.getordersToSeller)
     .post('/search', products.searchproducts)
 
+    .get('/getpopularitystatistics', orders.getpopularity)
+
 //Module Exports
 module.exports = router

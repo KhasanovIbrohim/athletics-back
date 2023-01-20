@@ -18,6 +18,16 @@ class Banks extends PG {
             INSERT INTO orders(user_id, product_id, order_status, user_phone) VALUES($1, $2, 'Confirmation pending', $3)
         `, userId, productId, phone)
     }
+    popularalgorithm(productId) {
+        return this.fetchAll(`
+            INSERT INTO popular_algoritm(product_id) VALUES($1);
+        `,productId)
+    }
+    getpopularity() {
+        return this.fetchAll(`
+            SELECT product_id, count(product_id) as id from popular_algoritm group by product_id order by id desc;
+        `)
+    }
     getOrdersById(id) {
         return this.fetchAll(`
             SELECT o.user_phone, o.order_id, o.order_status, p.product_name, p.product_company, p.product_price, p.product_image, p.product_sale, p.product_procent FROM orders o JOIN product p ON o.product_id = p.product_id WHERE o.user_id = $1
