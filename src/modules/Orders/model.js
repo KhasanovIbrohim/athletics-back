@@ -25,7 +25,7 @@ class Banks extends PG {
     }
     getpopularity() {
         return this.fetchAll(`
-            SELECT product_id, count(product_id) as count from popular_algoritm group by product_id order by id desc;
+            SELECT product_id, count(product_id) as count from popular_algoritm group by product_id order by count desc;
         `)
     }
     getOrdersById(id) {
