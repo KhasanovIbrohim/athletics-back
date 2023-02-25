@@ -6,6 +6,7 @@ const orders = require('./Orders/Orders')
 const products = require('./Products/Products')
 const subscribers = require('./Subscribers/Subscribers')
 const users = require('./Users/Users')
+const chats = require('./Chats/Chat')
 
 //Router
 router
@@ -35,6 +36,10 @@ router
 
     .get('/getpopularitystatistics', orders.getpopularity)
     .get('/getproductbyid/:id', products.getproductbyid)
+
+    .post('/sendmessage', chats.sendMessage)
+    .post('/getchats', chats.getChatsById)
+    .post('/getmessages', chats.getMessages)
 
 //Module Exports
 module.exports = router

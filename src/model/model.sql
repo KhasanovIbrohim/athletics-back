@@ -48,9 +48,85 @@ CREATE TABLE popular_algoritm(
     product_id int REFERENCES product(product_id)
 );
 
+CREATE TABLE chat(
+    chat_id serial PRIMARY KEY,
+    first_user int REFERENCES users(user_id),
+    second_user int REFERENCES users(user_id)
+);
 
--- INSERT INTO order_info(orders_id, order_created_time, order_seller_id) VALUES(9, now(), 15);
+INSERT INTO chat(first_user, second_user) VALUES(1, 2);
+INSERT INTO chat(first_user, second_user) VALUES(1, 5);
 
--- UPDATE order_info SET order_changed_time = now() WHERE orders_id = 9;
+CREATE TABLE chat_message(
+    message_id serial PRIMARY KEY,
+    user_id int REFERENCES users(user_id),
+    chat_id int REFERENCES chat(chat_id),
+    message_text text not null,
+    message_sended_time TIMESTAMP not null
+);
 
--- SELECT AGE(order_changed_time, order_created_time) from order_info;
+INSERT INTO chat_message(user_id, chat_id, message_text, message_sended_time) VALUES(1, 1, 'OK', now());
+INSERT INTO chat_message(user_id, chat_id, message_text, message_sended_time) VALUES(2, 1, 'Chundim', now());
+INSERT INTO chat_message(user_id, chat_id, message_text, message_sended_time) VALUES(1, 1, 'Tinchuhami', now());
+INSERT INTO chat_message(user_id, chat_id, message_text, message_sended_time) VALUES(2, 1, 'Da', now());
+
+
+SELECT c.chat_id, u.user_name, c.first_user, c.second_user FROM chat c JOIN users u ON u.user_id = c.second_user WHERE c.first_user = 1;
+
+SELECT c.chat_id, m.user_id, m.message_id, m.message_text, m.message_sended_time FROM chat c JOIN chat_message m ON c.chat_id = m.chat_id WHERE c.chat_id = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Alpha test 10.0
+
+-- CREATE TABLE groups(
+--     group_id serial PRIMARY KEY,
+--     group_name VARCHAR(64) not null
+-- );
+
+-- CREATE TABLE group_members(
+--     group_id int REFERENCES groups(group_id),
+--     user_id int REFERENCES users(user_id),
+--     is_admin boolean not null
+-- );
+
+-- CREATE TABLE group_messages(
+--     group_id int REFERENCES groups(group_id),
+--     sender_id int REFERENCES users(user_id),
+--     message_text text not null,
+--     message_sended_time TIMESTAMP not null
+-- );
+
+-- INSERT INTO groups(group_name) VALUES('Staff');
+
+-- INSERT INTO group_members(group_id, user_id, is_admin) VALUES(1, 1, true);
+-- INSERT INTO group_members(group_id, user_id, is_admin) VALUES(1, 2, false);
+-- INSERT INTO group_members(group_id, user_id, is_admin) VALUES(1, 3, false);
+
+-- INSERT INTO group_messages(group_id, sender_id, message_text, message_sended_time) 
+-- VALUES(1, 1, 'Hello!', now());
+-- INSERT INTO group_messages(group_id, sender_id, message_text, message_sended_time) 
+-- VALUES(1, 1, 'Brothers, How are you?', now());
+-- INSERT INTO group_messages(group_id, sender_id, message_text, message_sended_time) 
+-- VALUES(1, 3, 'Im good', now());
+-- INSERT INTO group_messages(group_id, sender_id, message_text, message_sended_time) 
+-- VALUES(1, 4, 'Im too', now());
+
+-- SELECT group_name, COUNT(user_id) as users FROM groups g JOIN group_members m ON g.group_id = m.group_id GROUP BY g.group_name;
+
+-- SELECT * FROM group_messages WHERE group_id = 1;

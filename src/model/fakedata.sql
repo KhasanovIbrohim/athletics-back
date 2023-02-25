@@ -1,5 +1,7 @@
 INSERT INTO users(user_name, user_password, user_phone, user_isAdmin, user_isSeller) VALUES('Ibrohim01', crypt('8467', gen_salt('bf')), '1', true, false);
 INSERT INTO users(user_name, user_password, user_phone, user_isAdmin, user_isSeller) VALUES('Ibrohim02', crypt('7648', gen_salt('bf')), '2', false, true);
+INSERT INTO users(user_name, user_password, user_phone, user_isAdmin, user_isSeller) VALUES('Ibrohim03', crypt('1234', gen_salt('bf')), '2', false, true);
+INSERT INTO users(user_name, user_password, user_phone, user_isAdmin, user_isSeller) VALUES('Ibrohim04', crypt('4321', gen_salt('bf')), '2', false, true);
 
 INSERT INTO subscribers(subscriber_phone, subscriber_email) VALUES('909342125','ibrohimdev01@gmail.com');
 INSERT INTO subscribers(subscriber_phone, subscriber_email) VALUES('972658001','khasanovibrohim02@gmail.com');
