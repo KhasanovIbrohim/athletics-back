@@ -10,8 +10,8 @@ class Chats extends PG {
     }
     getChatsById(userId) {
         return this.fetchAll(`
-            SELECT c.chat_id, u.user_name, c.first_user, c.second_user FROM chat c JOIN users u 
-            ON u.user_id = c.second_user WHERE c.first_user = $1;
+            SELECT c.chat_id, u.user_name, c.first_user, c.second_user FROM chat c JOIN
+            users u ON u.user_id = c.second_user OR u.user_id = c.first_user WHERE c.first_user = $1 OR c.second_user = $1;
         `, userId)
     }
     getMessages(chatId) {
